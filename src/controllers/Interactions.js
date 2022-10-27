@@ -1,11 +1,14 @@
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
+import btnInteractions from "./Button/btnController.js";
+import inputInteractions from "./Input/inputController.js";
+
 const interactionFunction = async (interaction) => {
-    if (!interaction.isChatInputCommand()) return;
-  
-        if (interaction.commandName === 'sugestao') {
-            const area = interaction.options._hoistedOptions[0].role
-            await interaction.reply({ content: `Sugestão para a área de ${area.name}`, });
-            console.log(area)
-        }
-  }
+    if (interaction.isChatInputCommand()){
+            inputInteractions(interaction)
+
+  }else if (interaction.isButton()) {
+            btnInteractions(interaction)
+}
+}
 
   export default interactionFunction

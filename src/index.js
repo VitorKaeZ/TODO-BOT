@@ -17,4 +17,6 @@ bot.on('ready', () => {
   
 bot.on('interactionCreate', (interaction) => {
   interactionFunction(interaction)
+  // console.log(interaction)
+  // console.log(interaction.member.nickname)
 })
