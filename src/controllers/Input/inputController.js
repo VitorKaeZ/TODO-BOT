@@ -10,8 +10,6 @@ const inputInteractions = async (interaction) => {
             const row = rowComponent
             await interaction.reply( { embeds: embed, components: [row], fetchReply: true} )
             .then((msg) => {
-                msg.react('👍');
-                msg.react('👎');
                 msg.startThread({
                     name: `${areaName} - ${assunto}`,
                     autoArchiveDuration: 60,

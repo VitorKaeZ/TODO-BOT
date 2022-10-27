@@ -1,7 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
 
 const embedComponent = (interaction) => {
-        console.log(interaction.client.channels)
     const areaId = interaction.options._hoistedOptions[0].role.id
     const areaName = interaction.options._hoistedOptions[0].role.name
     const assunto = interaction.options._hoistedOptions[1].value
@@ -22,7 +21,8 @@ const embedComponent = (interaction) => {
     .setTitle(`__${assunto}__`.toUpperCase())
     .addFields(
         { name:'__Área__', value: `<@&${areaId}>`},
-        { value: '0', name: 'Votação', inline: false},
+        { value: '\`0\`', name: '👍', inline: true},
+        { value: '\`0\`', name: '👎', inline: true},
     )
     .setAuthor({ name: `${authorName}`, iconURL: avatar, url: `https://discord.com/users/${userUrl}` })
     .setThumbnail(avatar)

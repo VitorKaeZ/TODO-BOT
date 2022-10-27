@@ -2,57 +2,33 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "disc
 import embedComponent from "../../components/embedComponent.js";
 
 const btnInteractions = async (interaction) => {
-    console.log(interaction.message.embeds[0].fields)
     const oldEmbed = interaction.message.embeds[0]
-    const avatar = interaction.user.displayAvatarURL()
-    const authorName =  interaction.member.nickname
-    const userUrl =  interaction.user.id
-    const componentLabel = interaction.component.label
-    let label = parseInt(componentLabel.slice(3))
-    let likes = label == NaN ? 0 : label
-    // console.log(typeof(label))
-    // console.log(likes)
-    let unlikes 
+    const componentLabel1 = oldEmbed.fields[1].value
+    const componentLabel2 = oldEmbed.fields[2].value
+    oldEmbed.fields[1].value
+    // console.log(componentLabel)
+    let label = componentLabel1.match(/(\d+)/)
+    let label2 = componentLabel2.match(/(\d+)/)
+    // console.log(label)
+    let likes = parseInt(label[0]) || 0
+    let unlikes = parseInt(label2[0]) || 0
+    console.log(likes, unlikes)
     if (interaction.customId === 'likeBtn') {
-        // const exampleEmbed = new EmbedBuilder()
-        // .setTitle('Some title')
-        // .setDescription('Description after the edit');
+        likes = likes + 1
 
-    // interaction.update({ components: [ActionRow],
-    //     fetchReply: true }).then((msg) => {
-    //         msg.edit({embeds:[exampleEmbed]});
-    //     })
-        // likes = label + 1
-        // console.log(likes)
     }else if (interaction.customId === 'unlikeBtn') {
-        unlikes = label + 1
-        console.log(typeof(unlikes))
-        console.log(unlikes)
+        unlikes = unlikes + 1
     }
-
-    const ActionRow = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('likeBtn')
-                .setLabel(`👍 ${likes}`)
-                .setStyle(ButtonStyle.Success),
-        ).addComponents(
-            new ButtonBuilder()
-                .setCustomId('unlikeBtn')
-                .setLabel(`👎 ${unlikes}`)
-                .setStyle(ButtonStyle.Danger),
-        )
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('endBtn')
-                .setLabel('Encerrar')
-                .setStyle(ButtonStyle.Primary),
-        )
+    console.log(likes, unlikes)
 
         const field = oldEmbed.fields
         const newEmbed = oldEmbed
-        const likeField = { value: '👍 0 - 👎 0', name: 'Votação', inline: true }
+        const likeField = { value: `\`${likes}\` `, name: `👍`, inline: true }
+        const unlikeField = { value: `\`${unlikes}\` `, name: `👎`, inline: true }
         newEmbed.fields[1] = likeField
+        newEmbed.fields[2] = unlikeField
+        likes = 0
+        unlikes = 0
         return interaction.update({embeds:[newEmbed]})
                
             // .then((msg) => {
