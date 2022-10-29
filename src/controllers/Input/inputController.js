@@ -1,9 +1,10 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
+import { getMyDb } from "../../../db/db.js";
 import embedComponent from "../../components/embedComponent.js";
 import rowComponent from "../../components/rowComponent.js";
 
 const inputInteractions = async (interaction) => {
         if (interaction.commandName === 'sugestao') {
+            const db = await getMyDb()
             const areaName = interaction.options._hoistedOptions[0].role.name
             const assunto = interaction.options._hoistedOptions[1].value     
             const embed = embedComponent(interaction)
@@ -17,6 +18,13 @@ const inputInteractions = async (interaction) => {
                     reason: 'thread'
                 });
             }).catch((err) => console.log(err))
+
+                db.data.suggestions.push({
+                    id:interaction.id,
+                    likes:[],
+                    unlikes:[]
+                })
+               db.write()      
 
         };
     }

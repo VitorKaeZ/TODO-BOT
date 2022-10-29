@@ -1,22 +1,33 @@
+import express from 'express'
+const app = express()
 import { Client, GatewayIntentBits } from 'discord.js'
 import { config as dotEnvCfg } from 'dotenv'
-import slashCommands from './commands/slashCommands.js'
-import interactionFunction from './controllers/Interactions.js'
 dotEnvCfg()
+import slashCommands from './commands/slashCommands.js'
 slashCommands()
+import interactionFunction from './controllers/Interactions.js'
 
-const bot = new Client({ 
-  intents:  [GatewayIntentBits.Guilds
-  ] })
+(async () => {
+  
+  
+  app.use(express.json())
 
-bot.login(process.env.TOKEN_APP)
+    app.listen(3000, () => {
+      console.log(`Logged!!`)
+    })
+    
+    const bot = new Client({ 
+      intents:  [GatewayIntentBits.Guilds
+    ] })
   
-bot.on('ready', () => {
-  console.log(`Logged in as ${bot.user.tag}!`);
-})
+    bot.login(process.env.TOKEN_APP)
   
-bot.on('interactionCreate', (interaction) => {
-  interactionFunction(interaction)
-  // console.log(interaction)
-  // console.log(interaction.member.nickname)
-})
+    bot.on('ready', () => {
+      console.log(`Logged in as ${bot.user.tag}!`);
+    })
+  
+    bot.on('interactionCreate', (interaction) => {
+      interactionFunction(interaction)
+    })
+}
+)();
