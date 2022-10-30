@@ -3,9 +3,9 @@ const app = express()
 import { Client, GatewayIntentBits } from 'discord.js'
 import { config as dotEnvCfg } from 'dotenv'
 dotEnvCfg()
-import slashCommands from './commands/slashCommands.js'
+import slashCommands from './src/commands/slashCommands.js'
 slashCommands()
-import interactionFunction from './controllers/Interactions.js'
+import interactionFunction from './src/controllers/Interactions.js'
 
 (async () => {
   

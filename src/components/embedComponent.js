@@ -21,8 +21,7 @@ const embedComponent = (interaction) => {
     .setTitle(`__${assunto}__`.toUpperCase())
     .addFields(
         { name:'__Área__', value: `<@&${areaId}>`},
-        { value: '\`0\`', name: '👍', inline: true},
-        { value: '\`0\`', name: '👎', inline: true},
+        
     )
     .setAuthor({ name: `${authorName}`, iconURL: avatar, url: `https://discord.com/users/${userUrl}` })
     .setThumbnail(avatar)
