@@ -2,7 +2,6 @@ import { EmbedBuilder } from "discord.js"
 
 const clearController = async (interaction) => {
     const { channel, options } = interaction
-
     const amount = options.getInteger('quantidade')
     const target = options.getUser('membro')
 

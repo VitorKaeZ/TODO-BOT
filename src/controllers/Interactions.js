@@ -3,10 +3,10 @@ import inputInteractions from "./Input/inputController.js";
 
 const interactionFunction = async (interaction) => {
     if (interaction.isChatInputCommand()){
-            inputInteractions(interaction)
+      inputInteractions(interaction)
 
     }else if (interaction.isButton()) {
-            btnInteractions(interaction)
+      btnInteractions(interaction)
     }
 }
 

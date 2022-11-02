@@ -1,6 +1,6 @@
 import express from 'express'
 const app = express()
-import { Client, GatewayIntentBits } from 'discord.js'
+import { ActivityType, Client, GatewayIntentBits } from 'discord.js'
 import { config as dotEnvCfg } from 'dotenv'
 dotEnvCfg()
 import slashCommands from './src/commands/slashCommands.js'
@@ -24,7 +24,10 @@ import interactionFunction from './src/controllers/Interactions.js'
   
     bot.on('ready', () => {
       console.log(`Logged in as ${bot.user.tag}!`)
-      bot.user.setActivity(`TODO-BOT`);
+      bot.user.setPresence({
+        activities: [{ name: `TODO-BOT v1.0`, type: ActivityType.Playing }],
+        status: 'OLÁ',
+      });
     })
     
   
