@@ -29,3 +29,11 @@ APPROVED_CHANNEL=
 COMPLETED_CHANNEL=
 INITIAL_CHANNEL=
 ```
+
+Create an archive db.json in db folder and set this
+
+```
+{
+  "suggestions": []
+}
+```
