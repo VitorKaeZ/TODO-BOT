@@ -1,8 +1,10 @@
 import suggestionCommand from './suggestionCommand.js'
+
 import { config as dotEnvCfg } from 'dotenv'
 import { REST, Routes } from 'discord.js'
+import clearCommand from './clearCommand.js'
 dotEnvCfg()
-const commands = [suggestionCommand]
+const commands = [ suggestionCommand, clearCommand]
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN_APP);
 

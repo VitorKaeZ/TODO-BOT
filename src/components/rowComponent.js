@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 
 const rowComponent = new ActionRowBuilder()
 			.addComponents(
@@ -22,29 +22,49 @@ const rowComponent = new ActionRowBuilder()
 					.setStyle(ButtonStyle.Primary),
 			)
 
-export async function newRow(likes,unlikes) {
-		const row =	new ActionRowBuilder()
-		.addComponents(
-			new ButtonBuilder()
-				.setCustomId('likeBtn')
-				.setLabel(`${likes}`)
-				.setEmoji('👍')                    
-				.setStyle(ButtonStyle.Success),
-		)
-		.addComponents(
-			new ButtonBuilder()
-				.setCustomId('unlikeBtn')
-				.setLabel(`${unlikes}`)
-				.setEmoji('👎')
-				.setStyle(ButtonStyle.Danger),
-		)
-		.addComponents(
-			new ButtonBuilder()
-				.setCustomId('endBtn')
-				.setLabel('Encerrar')
-				.setStyle(ButtonStyle.Primary),
-		)
-		return row
-	}
+const newLikeRow = async (data, data2) => {
+			return new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId('likeBtn')
+					.setLabel(`${data}`)
+					.setEmoji('👍')                    
+					.setStyle(ButtonStyle.Success),
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId('unlikeBtn')
+					.setLabel(`${data2}`)
+					.setEmoji('👎')
+					.setStyle(ButtonStyle.Danger),
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId('endBtn')
+					.setLabel('Encerrar')
+					.setStyle(ButtonStyle.Primary),
+			)
+			
+		}
+const todoRow = new ActionRowBuilder()
+				.addComponents(
+					new ButtonBuilder()
+						.setCustomId('initialBtn')
+						.setLabel(`Iniciar`)
+						.setStyle(ButtonStyle.Primary),
+				)
+				.addComponents(
+					new ButtonBuilder()
+						.setCustomId('pauseBtn')
+						.setLabel(`Pausar`)
+						.setStyle(ButtonStyle.Danger),
+				)
+				.addComponents(
+					new ButtonBuilder()
+						.setCustomId('endBtn2')
+						.setLabel('Finalizar')
+						.setStyle(ButtonStyle.Success),
+				)
+	
 
-export default rowComponent
+export { rowComponent as default , todoRow, newLikeRow }
