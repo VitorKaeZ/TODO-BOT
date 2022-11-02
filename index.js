@@ -23,8 +23,10 @@ import interactionFunction from './src/controllers/Interactions.js'
     bot.login(process.env.TOKEN_APP)
   
     bot.on('ready', () => {
-      console.log(`Logged in as ${bot.user.tag}!`);
+      console.log(`Logged in as ${bot.user.tag}!`)
+      bot.user.setActivity(`TODO-BOT`);
     })
+    
   
     bot.on('interactionCreate', (interaction) => {
       interactionFunction(interaction)

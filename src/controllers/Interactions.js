@@ -5,9 +5,9 @@ const interactionFunction = async (interaction) => {
     if (interaction.isChatInputCommand()){
             inputInteractions(interaction)
 
-  }else if (interaction.isButton()) {
+    }else if (interaction.isButton()) {
             btnInteractions(interaction)
-}
+    }
 }
 
   export default interactionFunction
