@@ -4,6 +4,7 @@ import unlikeController from "./unLikeBtn.js";
 import endBtnController, { endBtnController2 } from "./endBtnController.js";
 import initialBtnController from "./initialBtnController.js";
 import pauseBtnController from "./pauseBtnController.js";
+import returnBtnController from "./returnBtnController.js";
 
 
 const btnInteractions = async (interaction) => {
@@ -30,7 +31,10 @@ const btnInteractions = async (interaction) => {
     } else if (interaction.customId === 'pauseBtn') {
         pauseBtnController(interaction)
         return
-    }        
+    } else if (interaction.customId === 'returnBtn') {
+        returnBtnController(interaction)
+        return
+    }
 };
 
 

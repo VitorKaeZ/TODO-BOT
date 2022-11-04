@@ -6,14 +6,14 @@ dotEnvCfg()
 import slashCommands from './src/commands/slashCommands.js'
 slashCommands()
 import interactionFunction from './src/controllers/Interactions.js'
-
 (async () => {
+  const port = process.env.PORT
   
   
   app.use(express.json())
 
-    app.listen(3000, () => {
-      console.log(`Logged!!`)
+    app.listen(port, () => {
+      console.log(`Logged in Express!`)
     })
     
     const bot = new Client({ 

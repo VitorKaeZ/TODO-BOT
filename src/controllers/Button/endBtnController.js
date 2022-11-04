@@ -1,6 +1,6 @@
 import e from "express"
 import { getMyDb } from "../../../db/db.js"
-import { todoRow } from "../../components/rowComponent.js"
+import { returnRow, todoRow } from "../../components/rowComponent.js"
 
 
 const endBtnController = async (interaction) => {
@@ -28,7 +28,8 @@ const endBtnController = async (interaction) => {
             const channel = interaction.guild.channels.cache.get(process.env.NOT_APPROVED_CHANNEL)
             const label ="Reprovada"
             embedData[0].fields[1].value = label
-            channel.send({ embeds: embedData }).then((data) => {
+            const todoRows = returnRow
+            channel.send({ embeds: embedData, components: [todoRows] }).then((data) => {
                 dados.id = data.id
                 dados.status = label
                 db.write()

@@ -21,8 +21,8 @@ const embedComponent = async (interaction) => {
     .setColor('Blue')
     .setTitle(`__${assunto}__`.toUpperCase())
     .addFields(
-        { name:'__Área__', value: `<@&${areaId}>`, inline: true},
-        { name:'__Status__', value: "Em Votação", inline: true}
+        { name:'Área', value: `<@&${areaId}>`, inline: true},
+        { name:'Status', value: "Em Votação", inline: true}
     )
     .setAuthor({ name: `${authorName}`, iconURL: avatar, url: `https://discord.com/users/${userUrl}` })
     .setThumbnail(avatar)
@@ -30,8 +30,5 @@ const embedComponent = async (interaction) => {
     .setFooter({ text: 'github.com/vitorkaez © ', iconURL: "https://avatars.githubusercontent.com/u/94807471?s=400&u=9912c713fa22f84cbb1e02afbf5417d15c5bc2e1&v=4"})
 ]}
 
-const newFields = async (data) => {
-    return { name:'__Área__', value: `<@&${data}>`, inline: true},{ name:'__Status__', value: `${data}`, inline: true}
-}
 
 export default embedComponent

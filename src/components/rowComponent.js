@@ -65,6 +65,22 @@ const todoRow = new ActionRowBuilder()
 						.setLabel('Finalizar')
 						.setStyle(ButtonStyle.Success),
 				)
+
+const returnRow = new ActionRowBuilder()
+				.addComponents(
+					new ButtonBuilder()
+						.setCustomId('returnBtn')
+						.setLabel(`Voltar`)
+						// .setEmoji('')
+						.setStyle(ButtonStyle.Danger),
+				)
+				.addComponents(
+					new ButtonBuilder()
+						.setCustomId('saveBtn')
+						.setLabel(`Armazenar`)
+						// .setEmoji('')
+						.setStyle(ButtonStyle.Primary),
+				)
 	
 
-export { rowComponent as default , todoRow, newLikeRow }
+export { rowComponent as default , todoRow, newLikeRow, returnRow }
